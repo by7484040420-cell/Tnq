@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-slate-50 text-slate-900 font-body;
+}
+
+::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 rounded-full;
+}
+
+/* Login screen's rotating tricolor ring — slow, continuous, decorative only. */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 30s linear infinite;
+}
+
+/* Two counter-rotating rings of service/job icons behind the login card.
+   Each ring's wrapper spins one way; each badge inside spins the opposite
+   way at the same speed, so badges orbit the card but stay upright instead
+   of tumbling. */
+.animate-orbit-outer { animation: spin-slow 46s linear infinite; }
+.animate-orbit-outer-badge { animation: spin-slow 46s linear infinite reverse; }
+.animate-orbit-inner { animation: spin-slow 34s linear infinite reverse; }
+.animate-orbit-inner-badge { animation: spin-slow 34s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-spin-slow,
+  .animate-orbit-outer,
+  .animate-orbit-outer-badge,
+  .animate-orbit-inner,
+  .animate-orbit-inner-badge {
+    animation: none;
+  }
+}
+
+/* Indian flag tricolor background for the login screen. */
+.bg-tricolor {
+  background: linear-gradient(
+    180deg,
+    #FF9933 0%, #FF9933 33%,
+    #ffffff 33%, #ffffff 67%,
+    #138808 67%, #138808 100%
+  );
+}
